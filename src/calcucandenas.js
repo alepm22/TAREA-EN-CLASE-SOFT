@@ -2,13 +2,13 @@ function calculadora(chain) {
   let delimiters = [',', '-', /[,|-]/];
   let numbersString = chain;
   let totalSum = 0;
-  const delimiterMatch = chain.match(/^\/\/\[(.)\]/);
+  const customDelimiterMatch = chain.match(/^\/\/\[(.)\]/);
 
-  if(delimiterMatch){
-    const delimiter = delimiterMatch[1];
+  if(customDelimiterMatch){
+    const delimiter = customDelimiterMatch[1];
     delimiters.pop();
     delimiters.push(new RegExp(`[${delimiter}|,|-]`));
-    numbersString = chain.slice(delimiterMatch[0].length +3 );
+    numbersString = chain.slice(customDelimiterMatch[0].length +3 );
   }
 
   numbersString = chain.split(delimiters[2]);
