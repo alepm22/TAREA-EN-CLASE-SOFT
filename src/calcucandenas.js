@@ -1,19 +1,19 @@
-function calculadora(chain) {
+function calculadora(inputString) {
   let delimiters = [',', '-', /[,|-]/];
-  let numbersString = chain;
+  let numbersString = inputString;
   let totalSum = 0;
-  const customDelimiterMatch = chain.match(/^\/\/\[(.)\]/);
+  const customDelimiterMatch = inputString.match(/^\/\/\[(.)\]/);
 
   if(customDelimiterMatch){
     const delimiter = customDelimiterMatch[1];
     delimiters.pop();
     delimiters.push(new RegExp(`[${delimiter}|,|-]`));
-    numbersString = chain.slice(customDelimiterMatch[0].length +3 );
+    numbersString = inputString.slice(customDelimiterMatch[0].length +3 );
   }
 
-  numbersString = chain.split(delimiters[2]);
+  numbersString = inputString.split(delimiters[2]);
 
-  if(chain === "")
+  if(inputString === "")
     return 0;
 
   if(numbersString.length != 1){
