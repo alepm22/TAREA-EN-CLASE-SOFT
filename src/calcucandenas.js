@@ -1,7 +1,7 @@
 function calculadora(chain) {
   let delimiters = [',', '-', /[,|-]/];
   let numbersString = chain;
-  let acc = 0;
+  let totalSum = 0;
   const delimiterMatch = chain.match(/^\/\/\[(.)\]/);
 
   if(delimiterMatch){
@@ -19,9 +19,9 @@ function calculadora(chain) {
   if(numbersString.length != 1){
     for(const num of numbersString){
       if(num <= 1000)
-        acc = acc + Number(num);
+        totalSum = totalSum + Number(num);
     }  
-    return acc;
+    return totalSum;
   }
   
   return Number(numbersString[0]);
